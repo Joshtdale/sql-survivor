@@ -32,13 +32,28 @@ def execute_query(query, params=None):
         #===============DONT EDIT ABOVE THIS=========================
 
 
-def select_all():
-    table_name = input('ENTER TABLE NAME: ')
-    query = "SELECT * from heroes WHERE name = %s"
+# def select_all():
+#     table_name = input('ENTER TABLE NAME: ')
+#     query = "SELECT * from heroes WHERE name = %s"
 
-    list_of_heroes = execute_query(query, (table_name,)).fetchall()
-    print(list_of_heroes)
-    for record in list_of_heroes:
-        print(record[1])
+#     list_of_heroes = execute_query(query, (table_name,)).fetchall()
+#     print(list_of_heroes)
+#     for record in list_of_heroes:
+#         print(record[1])
 
-select_all()
+# select_all()
+
+def init():
+    init_user_input = input(
+        '_______________________________\n'
+        '|WHAT\'S THE MOVE?             |\n'
+        '|1 - Create hero              |\n'
+        '|2 - Read hero attributes.    |\n'
+        '|3 - Update hero attributes.  |\n'
+        '|4 - Delete hero              |\n'
+        '-------------------------------\n'
+        'INPUT A VALID ACTION #\n'
+        ' \n')
+    print(init_user_input)
+
+init()
