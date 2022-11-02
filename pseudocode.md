@@ -24,7 +24,7 @@ Pip install -r
 
 ### Pseudocode:
 
-init(){
+init():
     Initialize menu for picking one of the crud functions
     user input selects function for specific task
 
@@ -34,20 +34,19 @@ init(){
         update()
         delete()
 
-}
 
-create(){
+
+create():
     user input name, about me, bio
-}
 
-read(){
+
+read():
     select {user input}
-}
 
-update(){
+
+update():
     update user input hero.name value user input value
-}
 
-delete(){
+
+delete():
     delete user input hero.name
-}
