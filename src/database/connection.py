@@ -63,7 +63,8 @@ def update():
 
 def delete():
     name = input('WHICH CHARACTER DO YA WANNA DELETE FROM THIS THANG?: ')
-    print(name)
+    query = "DELETE FROM heroes WHERE %s = heroes.name"
+    execute_query(query, (name,))
     init()
 
 
@@ -82,7 +83,7 @@ def init():
         '|2 - Read hero attributes.    |\n'
         '|3 - Update hero attributes.  |\n'
         '|4 - Delete hero              |\n'
-        '-------------------------------\n'
+        '|_____________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
     user_input[init_user_input]()
