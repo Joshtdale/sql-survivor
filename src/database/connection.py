@@ -44,7 +44,14 @@ def execute_query(query, params=None):
 # select_all()
 
 def create():
-    print('create works')
+    # print('create works')
+    name = input('WHAT IS YOUR NAME: ')
+    about_me = input('WHAT DO YOU WANT OTHERS TO KNOW ABOUT YOU: ')
+    biography = input('TELL US A LITTLE BIT ABOUT YOURSELF: ')
+    query = "INSERT INTO heroes (name, about_me, biography) VALUES (%s, %s, %s)"
+    execute_query(query, (name, about_me, biography))
+
+    print(name + ', ' + biography)
 
 def read():
     print('read works')
