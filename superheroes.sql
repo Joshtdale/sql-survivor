@@ -10,55 +10,57 @@ INSERT INTO
     heroes (name, about_me, biography)
 VALUES
     (
-        'Chill Woman',
-        'The coolest woman youll ever meet.',
-        'In a freak industrial accident, Chill Woman was dunked in toxic waste. After an agonizing transformation, she developed the ability to exhale sub-zero mist that freezes everything it touches.'
+        'Method Man',
+        'The coolest due youll ever meet.',
+        'In a freak industrial accident, Method Man was dunked in toxic waste. After an agonizing transformation, she developed the ability to exhale sub-zero mist that freezes everything it touches.'
     );
 
 INSERT INTO
     heroes (name, about_me, biography)
 VALUES
     (
-        'The Seer',
+        'Masta Killa',
         'He can see into your soul. Literally.',
-        'The Seer leads a normal life, so long as he wears his special shielded glasses. Once he removes them, he can see through walls, mountains, flesh - to the secrets held within.'
+        'GZA leads a normal life, so long as he wears his special shielded glasses. Once he removes them, he can see through walls, mountains, flesh - to the secrets held within.'
     );
 
 INSERT INTO
     heroes (name, about_me, biography)
 VALUES
     (
-        'McMuscles',
-        'Brute strength cant solve all problems, but she doesnt believe that.',
-        'Born on another planet and stranded here during an intergalactic training exercise, Muscles muscles expanded to gigantic proportion in Earths nitrogen-rich atmosphere, giving her amazing strength. The extra arms dont hurt, either.'
+        'Raekwon',
+        'Brute strength cant solve all problems, but he doesnt believe that.',
+        'Born on another planet and stranded here during an intergalactic training exercise, Muscles muscles expanded to gigantic proportion in Earths nitrogen-rich atmosphere, giving him amazing strength. The extra arms dont hurt, either.'
     );
 
 INSERT INTO
     heroes (name, about_me, biography)
 VALUES
     (
-        'The Hummingbird',
-        'Its a Bird! Its a plane! Oh wait, its really just a bird... Its The Hummingbird!',
-        'Perhaps the next step in human evolution, The Hummingbird gained his unique abilities manifested shortly after birth, when he floated out of the hospital nursery and into the care of General Allen Fitzpatrick and his Gamma Team. After Fitzpatricks death at the hands of Omega Force, The Hummingbird went rogue...FOR REVENGE!'
+        'Inspectah Deck',
+        'Its a Bird! Its a plane! Oh wait, its really just a bird... Inspectah Deck!',
+        'Perhaps the next step in human evolution, Inspectah Deck gained his unique abilities manifested shortly after birth, when he floated out of the hospital nursery and into the care of General Allen Fitzpatrick and his Gamma Team. After Fitzpatricks death at the hands of Omega Force, Inspectah Deck went rogue...FOR REVENGE!'
     );
 
 INSERT INTO
     heroes (name, about_me, biography)
 VALUES
     (
-        'Mental Mary',
-        'Her name may be ordinary, but her powers are not!',
-        'Once a famous medical researcher, Mental Mary performed an experimental procedure on herself - with unexpected results. Her full mental potential was unlocked, giving her powers over the physical world and the minds of those around her.'
+        'U-God',
+        'His name may be ordinary, but his powers are not!',
+        'Once a famous medical researcher, U-God performed an experimental procedure on himself - with unexpected results. His full mental potential was unlocked, giving his powers over the physical world and the minds of those around him.'
     );
 
 INSERT INTO
     heroes (name, about_me, biography)
 VALUES
     (
-        'Lieutenant Lidar',
-        'If you dont tell the truth, you wont get far. Whos on the case? Lieutenant Lidar!',
-        'Born without the ability to see, Lieutenant Lidar learned from a young age to use his ears. Due to his ability to listen deeply and understand body language nuances before the age of twelve, he was recruited by the Marine Special Forces to help with interviewing high profile liars. One day, he was hit with an intense ray of gamma radiation and the only way the Marine doctors could fix him was to add nanotech robots into his brain. Due to the gamma radiation, nanotech, and prior history of intense deep listening combo, he now has the ability to see everyday objects using his mind, and with immense control he can even zoom in 1000X away!'
+        'Ghostface Killah',
+        'If you dont tell the truth, you wont get far. Whos on the case? Ghostface Killah!',
+        'Born without the ability to see, Ghostface Killah learned from a young age to use his ears. Due to his ability to listen deeply and understand body language nuances before the age of twelve, he was recruited by the Marine Special Forces to help with interviewing high profile liars. One day, he was hit with an intense ray of gamma radiation and the only way the Marine doctors could fix him was to add nanotech robots into his brain. Due to the gamma radiation, nanotech, and prior history of intense deep listening combo, he now has the ability to see everyday objects using his mind, and with immense control he can even zoom in 1000X away!'
     );
+
+
 
 CREATE TABLE relationship_types (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
