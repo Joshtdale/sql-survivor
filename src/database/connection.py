@@ -43,6 +43,26 @@ def execute_query(query, params=None):
 
 # select_all()
 
+def select_all():
+    # table_name = input('ENTER TABLE NAME: ')
+    query = "SELECT name From heroes"
+
+    list_of_heroes = execute_query(query, )
+    # print(list_of_heroes)
+    for record in list_of_heroes:
+        print(" \n" + 
+            record[0]
+            )
+
+def select_contestant():
+    contestant_name = input('ENTER CONTESTANT\'S NAME: ')
+    query = "SELECT * from heroes WHERE name = %s"
+
+    list_of_heroes = execute_query(query, (contestant_name,))
+    # print(list_of_heroes)
+    for record in list_of_heroes:
+        print(record)
+
 def create():
     # print('create works')
     name = input('WHAT IS YOUR NAME: ')
@@ -54,7 +74,19 @@ def create():
     init()
 
 def read():
-    print('read works')
+    read_function_list = {
+        '1': select_all,
+        '2': select_contestant
+    }
+    read_user_input = input(
+        '_______________________________________\n'
+        '|WHAT\'S THE MOVE?                     |\n'
+        '|1 - WHO\'S LEFT ON THE ISLAND         |\n'
+        '|2 - SPECIFIC CONTESTANT\'S ATTRIBUTES |\n'
+        '|_____________________________________|\n'
+        'INPUT A VALID ACTION #\n'
+        ' \n')
+    read_function_list[read_user_input]()
     init()
 
 def update():
@@ -77,16 +109,28 @@ def init():
         }
 
     init_user_input = input(
-        '_______________________________\n'
-        '|WHAT\'S THE MOVE?             |\n'
-        '|1 - Create hero              |\n'
-        '|2 - Read hero attributes.    |\n'
-        '|3 - Update hero attributes.  |\n'
-        '|4 - Delete hero              |\n'
-        '|_____________________________|\n'
+        '======================================\n'
+        '|WHAT\'S THE MOVE?                    |\n'
+        '|1 - Create contestant               |\n'
+        '|2 - Read contestant attributes.     |\n'
+        '|3 - Update contestant attributes.   |\n'
+        '|4 - Vote a contestant off the Island|\n'
+        '|____________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
     user_input[init_user_input]()
 
+def logo():
+    print('\nTHIS TIME ON...')
+    print('  _____                  _                     \n '    
+'/  ___|                (_)                 \n'
+' \ `--. _   _ _ ____   _____   _____  _ __  \n'
+'  `--. \ | | | \'__\ \ / / \ \ / / _ \| \'__| \n'
+' /\__/ / |_| | |   \ V /| |\ V / (_) | |    \n'
+' \____/ \__,_|_|    \_/ |_| \_/ \___/|_|    \n'
+'  Feat. Wu-Tang                       \n')
+    
+
+logo()
 
 init()
