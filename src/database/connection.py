@@ -43,25 +43,7 @@ def execute_query(query, params=None):
 
 # select_all()
 
-def select_all():
-    # table_name = input('ENTER TABLE NAME: ')
-    query = "SELECT name From heroes"
 
-    list_of_heroes = execute_query(query, )
-    # print(list_of_heroes)
-    for record in list_of_heroes:
-        print(" \n" + 
-            record[0]
-            )
-
-def select_contestant():
-    contestant_name = input('ENTER CONTESTANT\'S NAME: ')
-    query = "SELECT * from heroes WHERE name = %s"
-
-    list_of_heroes = execute_query(query, (contestant_name,))
-    # print(list_of_heroes)
-    for record in list_of_heroes:
-        print(record)
 
 def create():
     # print('create works')
@@ -73,11 +55,32 @@ def create():
     print(name + ', ' + biography)
     init()
 
+
+
+# Read functions
+def select_all():
+    query = "SELECT name From heroes"
+
+    list_of_heroes = execute_query(query, )
+    for record in list_of_heroes:
+        print(" \n" + 
+            record[0]
+            )
+
+def select_contestant():
+    contestant_name = input('ENTER CONTESTANT\'S NAME: ')
+    query = "SELECT * from heroes WHERE name = %s"
+    list_of_heroes = execute_query(query, (contestant_name,))
+    for record in list_of_heroes:
+        print(record)
+
+
 def read():
     read_function_list = {
         '1': select_all,
         '2': select_contestant
     }
+
     read_user_input = input(
         '_______________________________________\n'
         '|WHAT\'S THE MOVE?                     |\n'
@@ -89,9 +92,50 @@ def read():
     read_function_list[read_user_input]()
     init()
 
+
+
+# Update functions
+def update_name():
+    name = input('WHICH CONTESTANT\'S NAME DO YA WANNA UPDATE?: ')
+    new_name = input('ENTER NEW NAME: ')
+    query = "UPDATE heroes SET name = %s WHERE %s = heroes.name "
+    execute_query(query, (new_name, name))
+
+def update_about():
+    name = input('WHICH CONTESTANT\'S ABOUT DO YA WANNA UPDATE?: ')
+    new_about = input('ENTER NEW ABOUT: ')
+    query = "UPDATE heroes SET about_me = %s WHERE %s = heroes.name "
+    execute_query(query, (new_about, name))
+
+def update_bio():
+    name = input('WHICH CONTESTANT\'S BIO DO YA WANNA UPDATE?: ')
+    old_bio = "SELECT biography FROM heroes WHERE %s = heroes.name"
+    # print(old_bio)
+    new_bio = input('ENTER NEW BIO: ')
+    query = "UPDATE heroes SET biography = %s WHERE %s = heroes.name "
+    older_bio = execute_query(old_bio, (name,))
+    print(older_bio)
+    execute_query(query, (new_bio, name))
+
 def update():
-    print('update works')
+    update_function_list = {
+        '1': update_name,
+        '2': update_about,
+        '3': update_bio
+    }
+    update_user_input = input(
+        '_______________________________________\n'
+        '|WHAT\'S THE MOVE?                     |\n'
+        '|1 - UPDATE A CONTESTANT\'S NAME       |\n'
+        '|2 - UPDATE A CONTESTANT\'S ABOUT.     |\n'
+        '|3 - UPDATE A CONTESTANT\'S BIO.       |\n'
+        '|_____________________________________|\n'
+        'INPUT A VALID ACTION #\n'
+        ' \n')
+    update_function_list[update_user_input]()
     init()
+
+
 
 def delete():
     name = input('WHICH CHARACTER DO YA WANNA DELETE FROM THIS THANG?: ')
