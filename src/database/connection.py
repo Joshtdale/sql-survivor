@@ -43,7 +43,27 @@ def execute_query(query, params=None):
 
 # select_all()
 
+def create():
+    print('create works')
+
+def read():
+    print('read works')
+
+def update():
+    print('update works')
+
+def delete():
+    print('delete works')
+
+
 def init():
+    user_input = {
+        '1': create, 
+        '2': read, 
+        '3': update, 
+        '4': delete
+        }
+
     init_user_input = input(
         '_______________________________\n'
         '|WHAT\'S THE MOVE?             |\n'
@@ -54,6 +74,7 @@ def init():
         '-------------------------------\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
-    print(init_user_input)
+    user_input[init_user_input]()
+
 
 init()
