@@ -50,17 +50,22 @@ def create():
     biography = input('TELL US A LITTLE BIT ABOUT YOURSELF: ')
     query = "INSERT INTO heroes (name, about_me, biography) VALUES (%s, %s, %s)"
     execute_query(query, (name, about_me, biography))
-
     print(name + ', ' + biography)
+    init()
 
 def read():
     print('read works')
+    init()
 
 def update():
     print('update works')
+    init()
 
 def delete():
-    print('delete works')
+    name = input('WHICH CHARACTER DO YA WANNA DELETE FROM THIS THANG?: ')
+    query = "DELETE FROM heroes WHERE %s = heroes.name"
+    execute_query(query, (name,))
+    init()
 
 
 def init():
@@ -78,7 +83,7 @@ def init():
         '|2 - Read hero attributes.    |\n'
         '|3 - Update hero attributes.  |\n'
         '|4 - Delete hero              |\n'
-        '-------------------------------\n'
+        '|_____________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
     user_input[init_user_input]()
