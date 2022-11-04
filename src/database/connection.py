@@ -11,7 +11,7 @@ def create_connection(db_name, db_user, db_password, db_host = "localhost", db_p
             host=db_host,
             port=db_port,
         )
-        print("Connection to PostgreSQL DB successful")
+        # print("Connection to PostgreSQL DB successful")
     except OperationalError as e:
         print(f"The error '{e}' occurred")
     return connection
@@ -23,7 +23,7 @@ def execute_query(query, params=None):
     try:
         cursor.execute(query, params)
         connection.commit()
-        print("Query executed successfully")
+        # print("Query executed successfully")
         connection.close()
         return cursor
     except OSError as e:
@@ -247,7 +247,7 @@ def update():
 
 def delete():
     name = input('WHICH CHARACTER DO YA WANNA DELETE FROM THIS THANG?: ')
-    confirmation = input('ARE YOU SURE YOU WANT TO VOTE ' + name + ' OFF??')
+    confirmation = input('ARE YOU SURE YOU WANT TO VOTE ' + name + ' OFF?? ')
     if confirmation.lower() == 'no' or confirmation.lower() == 'back':
         init()
     else:
@@ -290,7 +290,7 @@ def init():
 
 
 def logo():
-    wutang_forever()
+    # wutang_forever()
     print('\nTHIS TIME ON...')
     print('  _____                  _                     \n '    
 '/  ___|                (_)                 \n'
