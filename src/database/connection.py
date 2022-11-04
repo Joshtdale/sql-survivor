@@ -1,5 +1,6 @@
 import psycopg
 from psycopg import OperationalError
+import time
 
 def create_connection(db_name, db_user, db_password, db_host = "localhost", db_port = "5432"):
     connection = None
@@ -237,10 +238,6 @@ def update():
         update()
     # elif int(update_user_input) is 0:
     #     update()
-    
-
-
-
     init()
 
 
@@ -259,8 +256,10 @@ def delete():
 
 def wutang_forever():
     print(wu_tang_forever[0])
+    init()
 
 def init():
+    time.sleep(1)
     user_input = {
         '1': create, 
         '2': read, 
@@ -292,13 +291,20 @@ def init():
 def logo():
     # wutang_forever()
     print('\nTHIS TIME ON...')
-    print('  _____                  _                     \n '    
-'/  ___|                (_)                 \n'
-' \ `--. _   _ _ ____   _____   _____  _ __  \n'
-'  `--. \ | | | \'__\ \ / / \ \ / / _ \| \'__| \n'
-' /\__/ / |_| | |   \ V /| |\ V / (_) | |    \n'
-' \____/ \__,_|_|    \_/ |_| \_/ \___/|_|    \n'
-'  Feat. Wu-Tang                       \n')
+    time.sleep(1)
+#     print('  _____                  _                     \n '    
+# '/  ___|                (_)                 \n'
+# ' \ `--. _   _ _ ____   _____   _____  _ __  \n'
+# '  `--. \ | | | \'__\ \ / / \ \ / / _ \| \'__| \n'
+# ' /\__/ / |_| | |   \ V /| |\ V / (_) | |    \n'
+# ' \____/ \__,_|_|    \_/ |_| \_/ \___/|_|    \n'
+# '  Feat. Wu-Tang                       \n')
+    print("""
+              ▖    ▗▝ ▗▗       ▄▗       ▖  ▖    ▗  ▗   
+       ▝▜█▀█▛ █▌▐█▛▐█▛██▖▝█▙▐█▘██ ██▖█▛▗█▛█▙ ██▀█▙        
+        ▀▀▜█▄ █▌▐█▛▐█▙▟▛▘ ██▟▛ ██ ▐█▙█▘▐█▖██▌██▄█▀        
+       ▝██▄▟█ █▙▟█▌▐█▌▐█▌ ▐██▌ █▛  ██▛ ▝█▙▟█ ██ ██▖  
+    """)
     
 
 logo()
