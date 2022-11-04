@@ -31,6 +31,26 @@ def execute_query(query, params=None):
 
         #===============DONT EDIT ABOVE THIS=========================
 
+wu_tang_forever = {'████████████████████████████████████████\n'
+'████████████████████████████████████████\n'
+'███████████████████████████████▜████████\n'
+'████████▜██████████████████▛▀▖▗▗▜███████\n'
+'███████▘▗ ▖▝▝▀▀█████████▛▀▖▝▗▝ ▖ ▜██████\n'
+'██████▛ ▘▗ ▘▘▘▘ ▗▟████▛▗ ▘ ▘▖▖▘▖▘▖██████\n'
+'██████ ▘▝▗▝ ▘▝▗▘███████▌▝▝▝▗ ▖▘▗▗▗▐█████\n'
+'█████▌▘▘▘▖▝▝▝▝ ▖██▀▘▖▀█▛▖▘▝▗▝ ▝ ▖▗▝█████\n'
+'█████▌▘▝▗ ▚▝ ▘▘▖▜▙▘▘▗▝▜▘▖▘▘▖▖▘▘▘▖▖▝█████\n'
+'█████▚▜▛▟█▞▐▜▙▚▙▙▙▜▝▘▚█▙▚█▞▝▞▟█▟▞▞▚█████\n'
+'█████▙▜█▗█▚█▗█▙▞█▜█▛▟█▞▟▜▝█▀█▙▐▚▛▛▜█████\n'
+'██████▙▟▙▟██▙██▟███▙▟█▙██▙█▟██▟▙██▟█████\n'
+'█████▙▗ ▖▖ ▖▗  ▖▗ ▖▗▟▙▖▗ ▖▖▗  ▗   ▟█████\n'
+'██████▌▗▗ ▘▗▗▝▗▗▗▗▗ ███▗▝ ▖▖▝▝▗▝▝▐██████\n'
+'███████▄▗▝▝ ▖▝ ▖▗ ▖▝███▙ ▘▗ ▘▞ ▖▘███████\n'
+'████████▙ ▘▘ ▘▝▗ ▖▖▘▐███▞▝▗▝▗ ▖▖████████\n'
+'██████████▙▞▝▝▝ ▖▖▖▘▖▐██▙▘▖▗▗▝▗█████████\n'
+'█████████████▙▙▟▄▗▗▄▖▙▟█▙▗ ▘▄▟██████████\n'
+'████████████████████████▛▄▟█████████████\n'
+'████████████████████████████████████████\n'}
 
 # def select_all():
 #     table_name = input('ENTER TABLE NAME: ')
@@ -97,12 +117,20 @@ def read():
 # Update functions
 def update_name():
     name = input('WHICH CONTESTANT\'S NAME DO YA WANNA UPDATE?: ')
+    old_name = "SELECT * FROM heroes WHERE %s = heroes.name"
+    older_name = execute_query(old_name, (name,))
+    for item in older_name:
+        print( '\n' + 'OLD NAME: ' + f"{item[1]}" + '\n')
     new_name = input('ENTER NEW NAME: ')
     query = "UPDATE heroes SET name = %s WHERE %s = heroes.name "
     execute_query(query, (new_name, name))
 
 def update_about():
     name = input('WHICH CONTESTANT\'S ABOUT DO YA WANNA UPDATE?: ')
+    old_about = "SELECT about_me FROM heroes WHERE %s = heroes.name"
+    older_about = execute_query(old_about, (name,))
+    for about in older_about:
+        print( '\n' + 'OLD ABOUT: ' + f"{about[0]}" + '\n')
     new_about = input('ENTER NEW ABOUT: ')
     query = "UPDATE heroes SET about_me = %s WHERE %s = heroes.name "
     execute_query(query, (new_about, name))
@@ -110,11 +138,11 @@ def update_about():
 def update_bio():
     name = input('WHICH CONTESTANT\'S BIO DO YA WANNA UPDATE?: ')
     old_bio = "SELECT biography FROM heroes WHERE %s = heroes.name"
-    # print(old_bio)
+    older_bio = execute_query(old_bio, (name,))
+    for bio in older_bio:
+        print( '\n' + 'OLD BIO: ' + f"{bio[0]}" + '\n')
     new_bio = input('ENTER NEW BIO: ')
     query = "UPDATE heroes SET biography = %s WHERE %s = heroes.name "
-    older_bio = execute_query(old_bio, (name,))
-    print(older_bio)
     execute_query(query, (new_bio, name))
 
 def update():
@@ -165,6 +193,7 @@ def init():
     user_input[init_user_input]()
 
 def logo():
+    # print(wu_tang_forever[0])
     print('\nTHIS TIME ON...')
     print('  _____                  _                     \n '    
 '/  ___|                (_)                 \n'
