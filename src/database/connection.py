@@ -98,18 +98,27 @@ def select_contestant():
 def read():
     read_function_list = {
         '1': select_all,
-        '2': select_contestant
+        '2': select_contestant,
+        '3': init
     }
 
     read_user_input = input(
-        '_______________________________________\n'
-        '|WHAT\'S THE MOVE?                     |\n'
-        '|1 - WHO\'S LEFT ON THE ISLAND         |\n'
-        '|2 - SPECIFIC CONTESTANT\'S ATTRIBUTES |\n'
-        '|_____________________________________|\n'
+        '========================================\n'
+        '|WHAT\'S THE MOVE?                      |\n'
+        '|1 - WHO\'S LEFT ON THE ISLAND          |\n'
+        '|2 - SPECIFIC CONTESTANT\'S ATTRIBUTES  |\n'
+        '|3 - BACK TO MAIN MENU.                 |\n'
+        '|______________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
-    read_function_list[read_user_input]()
+    if int(read_user_input) in range(1, 4):
+        read_function_list[read_user_input]()
+    elif int(read_user_input) > 3:
+        read()()
+    elif int(read_user_input) is 0:
+        read()
+    
+
     init()
 
 
@@ -149,26 +158,48 @@ def update():
     update_function_list = {
         '1': update_name,
         '2': update_about,
-        '3': update_bio
+        '3': update_bio,
+        '4': init
     }
     update_user_input = input(
-        '_______________________________________\n'
-        '|WHAT\'S THE MOVE?                     |\n'
-        '|1 - UPDATE A CONTESTANT\'S NAME       |\n'
-        '|2 - UPDATE A CONTESTANT\'S ABOUT.     |\n'
-        '|3 - UPDATE A CONTESTANT\'S BIO.       |\n'
-        '|_____________________________________|\n'
+        '========================================\n'
+        '|WHAT\'S THE MOVE?                      |\n'
+        '|1 - UPDATE A CONTESTANT\'S NAME        |\n'
+        '|2 - UPDATE A CONTESTANT\'S ABOUT.      |\n'
+        '|3 - UPDATE A CONTESTANT\'S BIO.        |\n'
+        '|4 - BACK TO MAIN MENU.                |\n'
+        '|______________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
-    update_function_list[update_user_input]()
+    # try:
+    #     update_function_list[update_user_input]()
+    # except:
+    #     update()
+        # print('INVALID COMMAND YOU FOOL')
+    if int(update_user_input) in range(1, 4):
+        update_function_list[update_user_input]()
+    elif int(update_user_input) > 4 or int(update_user_input) == 0:
+        update()
+    # elif int(update_user_input) is 0:
+    #     update()
+    
+
+
+
     init()
 
 
 
 def delete():
     name = input('WHICH CHARACTER DO YA WANNA DELETE FROM THIS THANG?: ')
-    query = "DELETE FROM heroes WHERE %s = heroes.name"
-    execute_query(query, (name,))
+    confirmation = input('ARE YOU SURE YOU WANT TO VOTE ' + name + ' OFF??')
+    if confirmation.lower() == 'no' or confirmation.lower() == 'back':
+        init()
+    else:
+        query = "DELETE FROM heroes WHERE %s = heroes.name"
+        execute_query(query, (name,))
+    
+
     init()
 
 
@@ -177,7 +208,8 @@ def init():
         '1': create, 
         '2': read, 
         '3': update, 
-        '4': delete
+        '4': delete,
+        '5': init
         }
 
     init_user_input = input(
@@ -190,7 +222,12 @@ def init():
         '|____________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
-    user_input[init_user_input]()
+    if int(init_user_input) in range(1, 5):
+        user_input[init_user_input]()
+    elif int(init_user_input) > 4:
+        init()
+    elif int(init_user_input) is 0:
+        init()
 
 def logo():
     # print(wu_tang_forever[0])
