@@ -257,6 +257,8 @@ def delete():
 
     init()
 
+def wutang_forever():
+    print(wu_tang_forever[0])
 
 def init():
     user_input = {
@@ -264,7 +266,7 @@ def init():
         '2': read, 
         '3': update, 
         '4': delete,
-        '5': init
+        '5': wutang_forever
         }
 
     init_user_input = input(
@@ -274,18 +276,20 @@ def init():
         '|2 - Read contestant attributes.     |\n'
         '|3 - Update contestant attributes.   |\n'
         '|4 - Vote a contestant off the Island|\n'
+        '|5 - Wu-Tang Forever                 |\n'
         '|____________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
-    if int(init_user_input) in range(1, 5):
+    if int(init_user_input) in range(1, 6):
         user_input[init_user_input]()
-    elif int(init_user_input) > 4:
+    elif int(init_user_input) > 5:
         init()
     elif int(init_user_input) is 0:
         init()
 
+
+
 def logo():
-    # print(wu_tang_forever[0])
     print('\nTHIS TIME ON...')
     print('  _____                  _                     \n '    
 '/  ___|                (_)                 \n'
