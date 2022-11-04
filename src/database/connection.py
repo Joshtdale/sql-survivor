@@ -197,13 +197,13 @@ def update_power():
     name = input('WHICH CONTESTANT\'S POWER DO YA WANNA UPDATE?: ')
     select_powers(name)
     new_ability = input('WHAT KINDA POWERS DOES THIS BOY GOT?: ')
-    query = """UPDATE ability_types.name = %s 
+    query = """UPDATE heroes SET ability_types.name = %s 
     FROM heroes 
     JOIN abilities ON heroes.id = abilities.hero_id 
     JOIN ability_types ON ability_types.id = abilities.ability_type_id 
-    WHERE heroes.name = %s"""
+    WHERE name = %s"""
     select_powers(name)
-    # list_of_heroes = execute_query(query, (new_ability, name))
+    execute_query(query, (new_ability, name))
     # for record in list_of_heroes:
     #     print('\n________ \n' + record[0] + '\n________ \n')
 
