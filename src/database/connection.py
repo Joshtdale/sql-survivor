@@ -87,12 +87,51 @@ def select_all():
             record[0]
             )
 
-def select_contestant():
-    contestant_name = input('ENTER CONTESTANT\'S NAME: ')
+    
+def select_powers(name):
+    query = """SELECT ability_types.name 
+    FROM heroes 
+    JOIN abilities ON heroes.id = abilities.hero_id 
+    JOIN ability_types ON ability_types.id = abilities.ability_type_id 
+    WHERE heroes.name = %s"""
+    list_of_heroes = execute_query(query, (name,))
+    for record in list_of_heroes:
+        print('\n________ \n' + record[0] + '\n________ \n')
+    # attribute = input('ABOUT_ME? Biography?')
+    # query = "SELECT %s from heroes WHERE name = %s"
+    # list_of_heroes = execute_query(query, (attribute, name))
+    # for record in list_of_heroes:
+    #     print(record[0])
+
+def select_all_attributes(name):
     query = "SELECT * from heroes WHERE name = %s"
-    list_of_heroes = execute_query(query, (contestant_name,))
+    list_of_heroes = execute_query(query, (name,))
     for record in list_of_heroes:
         print(record)
+
+def select_contestant():
+    contestant_name = input('ENTER CONTESTANT\'S NAME: ')
+    selection_list = {
+        '1': select_powers,
+        '2': select_all_attributes
+    }
+    user_selection = input(
+        '========================================\n'
+        '|WHAT\'S THE MOVE?                      |\n'
+        '|1 - VIEW POWERS                       |\n'
+        '|2 - VIEW ALL ATTRIBUTES.              |\n'
+        # '|3 - BACK TO MAIN MENU.                 |\n'
+        '|______________________________________|\n'
+        'INPUT A VALID ACTION #\n'
+        ' \n')
+    if int(user_selection) in range(1, 3):
+        selection_list[user_selection](contestant_name)
+    elif int(user_selection) > 2:
+        read()
+    elif int(user_selection) is 0:
+        read()
+    
+
 
 
 def read():
@@ -107,14 +146,14 @@ def read():
         '|WHAT\'S THE MOVE?                      |\n'
         '|1 - WHO\'S LEFT ON THE ISLAND          |\n'
         '|2 - SPECIFIC CONTESTANT\'S ATTRIBUTES  |\n'
-        '|3 - BACK TO MAIN MENU.                 |\n'
+        '|3 - BACK TO MAIN MENU.                |\n'
         '|______________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
     if int(read_user_input) in range(1, 4):
         read_function_list[read_user_input]()
     elif int(read_user_input) > 3:
-        read()()
+        read()
     elif int(read_user_input) is 0:
         read()
     
@@ -154,12 +193,27 @@ def update_bio():
     query = "UPDATE heroes SET biography = %s WHERE %s = heroes.name "
     execute_query(query, (new_bio, name))
 
+def update_power():
+    name = input('WHICH CONTESTANT\'S POWER DO YA WANNA UPDATE?: ')
+    select_powers(name)
+    new_ability = input('WHAT KINDA POWERS DOES THIS BOY GOT?: ')
+    query = """UPDATE ability_types.name = %s 
+    FROM heroes 
+    JOIN abilities ON heroes.id = abilities.hero_id 
+    JOIN ability_types ON ability_types.id = abilities.ability_type_id 
+    WHERE heroes.name = %s"""
+    select_powers(name)
+    # list_of_heroes = execute_query(query, (new_ability, name))
+    # for record in list_of_heroes:
+    #     print('\n________ \n' + record[0] + '\n________ \n')
+
 def update():
     update_function_list = {
         '1': update_name,
         '2': update_about,
         '3': update_bio,
-        '4': init
+        '4': update_power,
+        '5': init
     }
     update_user_input = input(
         '========================================\n'
@@ -167,7 +221,8 @@ def update():
         '|1 - UPDATE A CONTESTANT\'S NAME        |\n'
         '|2 - UPDATE A CONTESTANT\'S ABOUT.      |\n'
         '|3 - UPDATE A CONTESTANT\'S BIO.        |\n'
-        '|4 - BACK TO MAIN MENU.                |\n'
+        '|4 - UPDATE A CONTESTANT\'S POWER.      |\n'
+        '|5 - BACK TO MAIN MENU.                |\n'
         '|______________________________________|\n'
         'INPUT A VALID ACTION #\n'
         ' \n')
@@ -176,9 +231,9 @@ def update():
     # except:
     #     update()
         # print('INVALID COMMAND YOU FOOL')
-    if int(update_user_input) in range(1, 4):
+    if int(update_user_input) in range(1, 5):
         update_function_list[update_user_input]()
-    elif int(update_user_input) > 4 or int(update_user_input) == 0:
+    elif int(update_user_input) > 5 or int(update_user_input) == 0:
         update()
     # elif int(update_user_input) is 0:
     #     update()
