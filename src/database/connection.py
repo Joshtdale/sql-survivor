@@ -238,10 +238,6 @@ def update():
         update()
     # elif int(update_user_input) is 0:
     #     update()
-    
-
-
-
     init()
 
 
@@ -260,10 +256,10 @@ def delete():
 
 def wutang_forever():
     print(wu_tang_forever[0])
-    time.sleep(1)
     init()
 
 def init():
+    time.sleep(1)
     user_input = {
         '1': create, 
         '2': read, 
@@ -306,5 +302,5 @@ def logo():
     
 
 logo()
-time.sleep(1)
+
 init()
