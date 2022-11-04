@@ -1,5 +1,6 @@
 import psycopg
 from psycopg import OperationalError
+import time
 
 def create_connection(db_name, db_user, db_password, db_host = "localhost", db_port = "5432"):
     connection = None
@@ -259,6 +260,8 @@ def delete():
 
 def wutang_forever():
     print(wu_tang_forever[0])
+    time.sleep(1)
+    init()
 
 def init():
     user_input = {
@@ -292,6 +295,7 @@ def init():
 def logo():
     # wutang_forever()
     print('\nTHIS TIME ON...')
+    time.sleep(1)
     print('  _____                  _                     \n '    
 '/  ___|                (_)                 \n'
 ' \ `--. _   _ _ ____   _____   _____  _ __  \n'
@@ -302,5 +306,5 @@ def logo():
     
 
 logo()
-
+time.sleep(1)
 init()
